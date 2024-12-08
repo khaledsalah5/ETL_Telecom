@@ -1,0 +1,2803 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/11/2024 3:13:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KHALED_PC"
+  DTS:CreatorName="KHALED_PC\ks134"
+  DTS:DTSID="{87B6BEC7-81C6-416F-82AB-669B2DBEA542}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Telecom_DB"
+  DTS:PackageType="5"
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{32204EE3-6A20-4394-8477-53C56774FAFE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FF Connection]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="source CSV file"
+      DTS:DTSID="{87D4C5CF-6C7D-4DC3-B956-1D91E9FD2C63}"
+      DTS:ObjectName="FF Connection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FullPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\02_clean_data_with_null.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{1A6FE7B9-8E24-4ACF-A732-D206E219E0B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="9"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="imsi"
+              DTS:DTSID="{01AD85E2-D658-404C-96B3-E5B14468C2FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="imei"
+              DTS:DTSID="{E59EE85A-DE33-46B4-BEF0-00661D62E16A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cell"
+              DTS:DTSID="{F0E5D263-2EB6-4376-9C2C-178B1B9A0EC0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="lac"
+              DTS:DTSID="{4DE2223B-E2E4-432E-BB3B-5FE11BAE53D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_type"
+              DTS:DTSID="{93B758EB-8A7C-4E42-9614-1DBDE9FE8F43}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_ts"
+              DTS:DTSID="{B15C969E-E436-40EF-A881-104B61FF10A0}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C09C807A-A5B6-4C24-8F34-4BE2C4349D18}"
+      DTS:ObjectName="KHALED_PC\SQLEXPRESS.ETL_Telecom">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=KHALED_PC\SQLEXPRESS;Initial Catalog=ETL_Telecom;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Processed_files]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{FB63E543-CD9B-43BA-9286-16F8CCF07B03}"
+      DTS:ObjectName="Processed_files">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\Processed_files" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{56D69DFE-9EB7-41D7-83C4-0A0F722DC847}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Audit_ID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{743D0CDF-07A3-45DF-839F-2037331BDBAF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Batch_ID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{16D32A8D-70BD-4CE9-BD16-67D66A34B85B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Directory">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{53D75951-C4DB-429E-A52D-52FC3C9E397E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="File_name">
+      <DTS:VariableValue
+        DTS:DataType="8">02_clean_data_with_null</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C875FD5F-C0FE-4188-B0C1-2E05E95B0857}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="File_type">
+      <DTS:VariableValue
+        DTS:DataType="8">.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41CE55D9-FEAE-4F2A-A08D-F0D9425476B2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Directory] +  @[User::File_name] +  @[User::File_type]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\02_clean_data_with_null.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1B166AEA-B646-452A-ACB1-3594570F0D66}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Move">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E0C4F9C8-5097-4BF2-AA4F-F08D94DBFCE0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Processed_Files">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\Processed_files</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A09FBA70-D1D8-459B-A571-B9BACCEE9BFD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Dest_Erorr">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3AA2DD66-C1AE-451B-B9B9-2AA767F40006}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Extracted_Erorr">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A45CEAC-4091-4F96-87A0-9000324738FF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Extracted_Processed">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7BEE56DD-2C75-4B36-BBDD-85ACDBF159B6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Pre_Insert">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{063F3F19-EB7F-481B-8CBB-31CFEA1FDEDB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FF Looping"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{77F3688E-17A7-4047-9DC3-E3958014ADCE}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FF Looping">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{380D1788-BA09-4AB9-A395-8773BFDDB960}"
+        DTS:ObjectName="{380D1788-BA09-4AB9-A395-8773BFDDB960}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="2" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FF Looping\DFT- Load and process CSV Files"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C828F7F5-5AE1-42A6-84F2-EB6FEC8EC11F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT- Load and process CSV Files"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Add Audit"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output].Columns[audit_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output].Columns[audit_id]"
+                          name="audit_id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::Audit_ID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::Audit_ID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Add Audit 1"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Output].Columns[audit_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Output].Columns[audit_id]"
+                          name="audit_id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::Audit_ID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::Audit_ID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Data PreProcessing"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input].Columns[imsi]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="imsi"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,9,1252)#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]} == "" ? NULL(DT_WSTR,9) : #{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,9,1252)imsi == "" ? NULL(DT_WSTR,9) : imsi</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input].Columns[imei]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="imei"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,14,1252)#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]} == "" ? NULL(DT_WSTR,14) : #{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,14,1252)imei == "" ? NULL(DT_WSTR,14) : imei</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input].Columns[cell]"
+                          cachedDataType="i4"
+                          cachedName="cell"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)(#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]} == 0 ? NULL(DT_I4) : #{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)(cell == 0 ? NULL(DT_I4) : cell)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input].Columns[lac]"
+                          cachedDataType="i4"
+                          cachedName="lac"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)(#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]} == 0 ? NULL(DT_I4) : #{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)(lac == 0 ? NULL(DT_I4) : lac)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input].Columns[event_ts]"
+                          cachedDataType="date"
+                          cachedName="event_ts"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_DATE)((DT_I4)#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]} == 0 ? NULL(DT_DATE) : #{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_DATE)((DT_I4)event_ts == 0 ? NULL(DT_DATE) : event_ts)</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Data Processing"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input].Columns[imei]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="imei"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input].Columns[subscriber_id]"
+                          cachedDataType="i4"
+                          cachedName="subscriber_id"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]}) ? -99999 : #{Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(subscriber_id) ? -99999 : subscriber_id</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[TAC]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="8"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[TAC]"
+                          name="TAC"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,8,1252)(([ISNULL](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]}) || [LEN](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]}) &lt; 15) ? "-99999" : [SUBSTRING](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]},1,8))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,8,1252)((ISNULL(imei) || LEN(imei) &lt; 15) ? "-99999" : SUBSTRING(imei,1,8))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[SNR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="6"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[SNR]"
+                          name="SNR"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,6,1252)(([ISNULL](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]}) || [LEN](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]}) &lt; 14) ? "-99999" : [SUBSTRING](#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]},9,6))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,6,1252)((ISNULL(imei) || LEN(imei) &lt; 14) ? "-99999" : SUBSTRING(imei,9,6))</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Erorr DEST"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[err_destination_output]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[imsi]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="imsi"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[imsi]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[imei]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="imei"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[imei]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[cell]"
+                          cachedDataType="i4"
+                          cachedName="cell"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[cell]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[lac]"
+                          cachedDataType="i4"
+                          cachedName="lac"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[lac]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[event_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="event_type"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_type]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[event_ts]"
+                          cachedDataType="date"
+                          cachedName="event_ts"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[event_ts]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[subscriber_id]"
+                          cachedDataType="i4"
+                          cachedName="subscriber_id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[subscriber_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[TAC]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TAC"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[tac]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[TAC]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[SNR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="SNR"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[snr]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[SNR]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                          cachedDataType="i4"
+                          cachedName="ErrorCode"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                          cachedDataType="i4"
+                          cachedName="ErrorColumn"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].Columns[audit_id]"
+                          cachedDataType="i4"
+                          cachedName="audit_id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output].Columns[audit_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[imsi]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="imsi" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[imei]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="imei" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[subscriber_id]"
+                          dataType="i4"
+                          name="subscriber_id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[cell]"
+                          dataType="i4"
+                          name="cell" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[lac]"
+                          dataType="i4"
+                          name="lac" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="event_type" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[event_ts]"
+                          dataType="dbTimeStamp"
+                          name="event_ts" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[tac]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="tac" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[snr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="snr" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                          dataType="i4"
+                          name="ErrorCode" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                          dataType="i4"
+                          name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          dataType="i4"
+                          name="audit_id" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Error SRC"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[err_source_output]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].Columns[Flat File Source Error Output Column]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="Flat File Source Error Output Column"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[Flat File Source Error Output Column]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                          cachedDataType="i4"
+                          cachedName="ErrorCode"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorCode]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                          cachedDataType="i4"
+                          cachedName="ErrorColumn"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].Columns[audit_id]"
+                          cachedDataType="i4"
+                          cachedName="audit_id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Output].Columns[audit_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          name="Flat File Source Error Output Column" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                          dataType="i4"
+                          name="ErrorCode" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                          dataType="i4"
+                          name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          dataType="i4"
+                          name="audit_id" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Dest DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[fact_transaction]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="RedirectRow"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[imsi]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="imsi"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[imsi]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[imei]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="14"
+                          cachedName="imei"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[imei]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[cell]"
+                          cachedDataType="i4"
+                          cachedName="cell"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[cell]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[lac]"
+                          cachedDataType="i4"
+                          cachedName="lac"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[lac]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[event_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="event_type"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_type]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[event_ts]"
+                          cachedDataType="date"
+                          cachedName="event_ts"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[event_ts]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[TAC]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="TAC"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[tac]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[TAC]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[SNR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="SNR"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[snr]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output].Columns[SNR]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[subscriber_id]"
+                          cachedDataType="i4"
+                          cachedName="subscriber_id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[subscriber_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[transaction_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].Columns[audit_id]"
+                          cachedDataType="i4"
+                          cachedName="audit_id"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output].Columns[audit_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[transaction_id]"
+                          dataType="i4"
+                          name="transaction_id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[imsi]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="imsi" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[subscriber_id]"
+                          dataType="i4"
+                          name="subscriber_id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[tac]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="tac" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[snr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="snr" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[imei]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="imei" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[cell]"
+                          dataType="i4"
+                          name="cell" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[lac]"
+                          dataType="i4"
+                          name="lac" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="event_type" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[event_ts]"
+                          dataType="dbTimeStamp"
+                          name="event_ts" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input].ExternalColumns[audit_id]"
+                          dataType="i4"
+                          name="audit_id" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Dest Erorr RC">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RC_Dest_Erorr</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Erorr RC">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RC_Extracted_Erorr</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Extracted RC">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RC_Extracted_Processed</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2057"
+                  name="FF SRC"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FF Connection]"
+                      connectionManagerRefId="Package.ConnectionManagers[FF Connection]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[id]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[imsi]"
+                          length="9"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]"
+                          name="imsi"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[imei]"
+                          length="14"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imei]"
+                          name="imei"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[cell]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[cell]"
+                          name="cell"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[lac]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[lac]"
+                          name="lac"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                          length="1"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_type]"
+                          name="event_type"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[event_ts]"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[event_ts]"
+                          name="event_ts"
+                          truncationRowDisposition="RedirectRow">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[imsi]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="imsi" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[imei]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="imei" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[cell]"
+                          dataType="i4"
+                          name="cell" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[lac]"
+                          dataType="i4"
+                          name="lac" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="event_type" />
+                        <externalMetadataColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].ExternalColumns[event_ts]"
+                          dataType="date"
+                          name="event_ts" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP IMSI REF"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_imsi_reference]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_imsi_reference]) [refTable]
+where [refTable].[imsi] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="imsi" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="subscriber_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHALED_PC\SQLEXPRESS.ETL_Telecom]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input].Columns[imsi]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="imsi"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output].Columns[imsi]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">imsi</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output].Columns[subscriber_id]"
+                          name="subscriber_id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">subscriber_id</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Pre Insert RC">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RC_Pre_Insert</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Inputs[Lookup Input]"
+                  name="Derived Column Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output1]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output2]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output3]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Flat File Source Error Output]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1.Inputs[Derived Column Input]"
+                  name="Flat File Source Error Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Error Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Flat File Source Output]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Add Audit.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\FF SRC.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Lookup Match Output]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Data Processing.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[OLE DB Destination Error Output]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC.Inputs[Row Count Input 1]"
+                  name="OLE DB Destination Error Output"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Outputs[OLE DB Destination Error Output]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 1]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 11]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 12]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 13]"
+                  endId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FF Looping\FST Copy Files"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{0fb59c97-fd23-4773-a365-cb621b1679f7}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FST Copy Files"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::Processed_Files"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FF Looping\FST Move Files"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{961C8FFE-E3B4-440C-88E1-C3004854B037}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FST Move Files"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::Processed_Files"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FF Looping\Insert Audit"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9A6BC797-019C-45EA-AE29-AE40FC529B07}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Insert Audit"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C09C807A-A5B6-4C24-8F34-4BE2C4349D18}"
+              SQLTask:SqlStatementSource="insert into dim_audit ( batch_id, package_name, file_name, rows_extracted, rows_inserted, rows_rejected, SuccessfulProcessingInd)&#xA;output inserted.id as audit_id&#xA;&#xA;&#xA;values (&#xA;&#x9;&#xA;?, -- 0 batch id&#xA;&#x9;&#xA;?, -- 1 package name&#xA;&#x9;&#xA;?, -- 2 file_name&#xA;&#x9;&#xA;NULL, -- 3 rows_extracted&#xA;&#x9;&#xA;NULL, -- 4 rows_inserted&#xA;&#x9;&#xA;NULL, -- 5 rows_rejected&#xA;&#x9;'N'&#xA;&#x9;)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::Audit_ID" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="User::Batch_ID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="0" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="User::File_name"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="2" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FF Looping\Insert Rows Count"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8DE891B7-CD30-4E82-84AB-2D015C632D0A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Insert Rows Count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C09C807A-A5B6-4C24-8F34-4BE2C4349D18}"
+              SQLTask:SqlStatementSource="update dim_audit&#xA;set &#xA;    &#xA;[rows_extracted] = ? + ?, -- 0  extracted processed + 1 extracted error&#xA;    &#xA;[rows_inserted] = ? - ?, -- 2 pre insert -  3 dest error&#xA;    &#xA;[rows_rejected] = ? + ?, -- 4 extracted error  +  5 dest error&#xA;&#x9;&#xA;SuccessfulProcessingInd = 'Y',&#xA;&#x9;&#xA;updated_at = getdate()&#xA;&#xA;where id = ? -- 6 audit_id" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RC_Extracted_Processed"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RC_Extracted_Erorr"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::RC_Pre_Insert"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::RC_Dest_Erorr"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::RC_Extracted_Erorr"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::RC_Dest_Erorr"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::Audit_ID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FF Looping.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4B1399AA-F455-4CE4-8CC2-CE309F1F9CC9}"
+          DTS:From="Package\FF Looping\DFT- Load and process CSV Files"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\FF Looping\Insert Rows Count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FF Looping.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{206A987A-6676-43E9-AFB1-9CE638DB2FCB}"
+          DTS:EvalOp="3"
+          DTS:Expression="!@[User::Move]"
+          DTS:From="Package\FF Looping\Insert Rows Count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\FF Looping\FST Copy Files" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FF Looping.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{B8AA481B-C36C-48A2-8F02-EEB6DF8B6A1E}"
+          DTS:From="Package\FF Looping\Insert Audit"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\FF Looping\DFT- Load and process CSV Files" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FF Looping.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{8E85D468-7927-42F9-9423-40E557DE2950}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::Move]"
+          DTS:From="Package\FF Looping\Insert Rows Count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\FF Looping\FST Move Files" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{CF729B80-E8C9-43F5-8215-1B3B9FE60803}"
+          DTS:ObjectName="{CF729B80-E8C9-43F5-8215-1B3B9FE60803}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::File_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET Batch ID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A5EBF515-EDB9-4AE9-B0D4-4ED02A573813}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET Batch ID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C09C807A-A5B6-4C24-8F34-4BE2C4349D18}"
+          SQLTask:SqlStatementSource="select max(batch_id) + 1 as batch_id from dim_audit"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::Batch_ID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9E633FF-7690-44DE-9A3F-9CECD210390A}"
+      DTS:From="Package\GET Batch ID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\FF Looping" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="232.8,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files"
+          TopLeft="70.5173475233639,107.069327459743" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\FF Looping\FST Move Files"
+          TopLeft="13.9693877731311,301.256302098292" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\FF Looping\FST Copy Files"
+          TopLeft="213.477552050457,305.61512574467" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\FF Looping\Insert Audit"
+          TopLeft="121.134694700808,12.7428570940214" />
+        <EdgeLayout
+          Id="Package\FF Looping.PrecedenceConstraints[Constraint 2]"
+          TopLeft="202.334694700808,54.3428570940214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.4173471774439,52.7264703657218"
+              Start="0,0"
+              End="-15.4173471774439,45.2264703657218">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3632351828609" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.3632351828609"
+                    Point2="0,26.3632351828609"
+                    Point3="-4,26.3632351828609" />
+                  <mssgle:LineSegment
+                    End="-11.4173471774439,26.3632351828609" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.4173471774439,26.3632351828609"
+                    Point2="-15.4173471774439,26.3632351828609"
+                    Point3="-15.4173471774439,30.3632351828609" />
+                  <mssgle:LineSegment
+                    End="-15.4173471774439,45.2264703657218" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\FF Looping\Insert Rows Count"
+          TopLeft="106.848980384683,188.62520988103" />
+        <EdgeLayout
+          Id="Package\FF Looping.PrecedenceConstraints[Constraint]"
+          TopLeft="188.283163954023,148.669327459743">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.955882421287"
+              Start="0,0"
+              End="0,32.455882421287">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.455882421287" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping.PrecedenceConstraints[Constraint 1]"
+          TopLeft="189.648980384683,230.22520988103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.4285716657739,75.3899158636402"
+              Start="0,0"
+              End="97.4285716657739,67.8899158636402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6949579318201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.6949579318201"
+                    Point2="0,37.6949579318201"
+                    Point3="4,37.6949579318201" />
+                  <mssgle:LineSegment
+                    End="93.4285716657739,37.6949579318201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.4285716657739,37.6949579318201"
+                    Point2="97.4285716657739,37.6949579318201"
+                    Point3="97.4285716657739,41.6949579318201" />
+                  <mssgle:LineSegment
+                    End="97.4285716657739,67.8899158636402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="40.7142858328869,42.6949579318201,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping.PrecedenceConstraints[Constraint 3]"
+          TopLeft="163.382313718016,230.22520988103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.012925944885,71.0310922172616"
+              Start="0,0"
+              End="-71.012925944885,63.5310922172616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8202709092047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.8202709092047"
+                    Point2="0,28.8202709092047"
+                    Point3="-4,28.8202709092047" />
+                  <mssgle:LineSegment
+                    End="-67.012925944885,28.8202709092047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.012925944885,28.8202709092047"
+                    Point2="-71.012925944885,28.8202709092047"
+                    Point3="-71.012925944885,32.8202709092047" />
+                  <mssgle:LineSegment
+                    End="-71.012925944885,63.5310922172616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.5064629724425,33.8202709092047,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="382.4,440.8"
+          Size="382.4,484"
+          Id="Package\FF Looping"
+          TopLeft="456.113946549179,200.815125894433" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\GET Batch ID"
+          TopLeft="577.142858371443,93.9495797495824" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="647.628402460311,135.549579749582">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.2655461448506"
+              Start="0,0"
+              End="0,57.7655461448506">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.7655461448506" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FF Looping\DFT- Load and process CSV Files">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC"
+          TopLeft="204.829932408818,267.483193042851" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF"
+          TopLeft="488.690477230769,336.630718671645" />
+        <NodeLayout
+          Size="112,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\FF SRC"
+          TopLeft="365.535715063843,20.6470588054315" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Data Processing"
+          TopLeft="478.103742514355,407.908963261389" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST"
+          TopLeft="300.875850980622,622.276143327211" />
+        <NodeLayout
+          Size="116.8,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Dest DB"
+          TopLeft="504.943311732488,545.575162920475" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Data PreProcessing"
+          TopLeft="471.977892084544,261.939075400652" />
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Lookup Match Output]"
+          TopLeft="557.597109872562,378.230718671645">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.6782445897444"
+              Start="0,0"
+              End="0,22.1782445897444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1782445897444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,5.2844347948722,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output]"
+          TopLeft="558.334184657657,303.539075400652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0916432709928"
+              Start="0,0"
+              End="0,25.5916432709928">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5916432709928" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="x"
+          ParentId="Package\FF Looping\DFT- Load and process CSV Files"
+          FontInfo="{assembly:Null}"
+          Size="34.4,40"
+          Id="9995d97a-69da-4c79-a685-21d99508db8d"
+          TopLeft="900.892859060622,77.5735293485893" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Add Audit"
+          TopLeft="496.488096294988,107.058823435571" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Extracted RC"
+          TopLeft="492.773810334377,186.599999851865" />
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Flat File Source Output]"
+          TopLeft="438.869048397177,62.2470588054315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.619047897811,44.811764630139"
+              Start="0,0"
+              End="119.619047897811,37.311764630139">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.303396820761" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.303396820761"
+                    Point2="0,18.303396820761"
+                    Point3="4,18.303396820761" />
+                  <mssgle:LineSegment
+                    End="115.619047897811,18.303396820761" />
+                  <mssgle:CubicBezierSegment
+                    Point1="115.619047897811,18.303396820761"
+                    Point2="119.619047897811,18.303396820761"
+                    Point3="119.619047897811,22.303396820761" />
+                  <mssgle:LineSegment
+                    End="119.619047897811,37.311764630139" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output1]"
+          TopLeft="560.430953314682,148.65882343557">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9411764162944"
+              Start="0,0"
+              End="0,30.4411764162944">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4411764162944" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 1]"
+          TopLeft="559.37585120946,228.199999851865">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.7390755487873"
+              Start="0,0"
+              End="0,26.2390755487873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.2390755487873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Add Audit 1"
+          TopLeft="214.873810020388,104.764705790523" />
+        <NodeLayout
+          Size="118.4,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Erorr RC"
+          TopLeft="217.766666930985,184.879411618079" />
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output2]"
+          TopLeft="279.320238475687,146.364705790523">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.5147058275565"
+              Start="0,0"
+              End="0,31.0147058275565">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0147058275565" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Flat File Source Error Output]"
+          TopLeft="421.535715063843,62.2470588054315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-139.861905043455,42.5176469850911"
+              Start="0,0"
+              End="-139.861905043455,35.0176469850911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2588234925455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2588234925455"
+                    Point2="0,21.2588234925455"
+                    Point3="-4,21.2588234925455" />
+                  <mssgle:LineSegment
+                    End="-135.861905043455,21.2588234925455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-135.861905043455,21.2588234925455"
+                    Point2="-139.861905043455,21.2588234925455"
+                    Point3="-139.861905043455,25.2588234925455" />
+                  <mssgle:LineSegment
+                    End="-139.861905043455,35.0176469850911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-133.557339240478,26.2588234925455,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 11]"
+          TopLeft="276.098299669902,226.479411618079">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.0037814247725"
+              Start="0,0"
+              End="0,33.5037814247725">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5037814247725" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Pre Insert RC"
+          TopLeft="485.523810555233,473.315685905736" />
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Derived Column Output3]"
+          TopLeft="555.413776534794,449.508963261389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.8067226443465"
+              Start="0,0"
+              End="0,16.3067226443465">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3067226443465" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 12]"
+          TopLeft="559.63356114386,514.915685905736">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6594770147389"
+              Start="0,0"
+              End="0,23.1594770147389">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1594770147389" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\FF Looping\DFT- Load and process CSV Files\Dest Erorr RC"
+          TopLeft="299.702381590369,543.07058779223" />
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[OLE DB Destination Error Output]"
+          TopLeft="504.943311732488,565.122875356352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-62.8409301421189,0"
+              Start="0,0"
+              End="-55.3409301421189,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-55.3409301421189,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.879371321059,5,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FF Looping\DFT- Load and process CSV Files.Paths[Row Count Output 13]"
+          TopLeft="372.689116285495,584.67058779223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.605555534981"
+              Start="0,0"
+              End="0,30.105555534981">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.105555534981" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_imsi_reference]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FF Looping\DFT- Load and process CSV Files\Dest DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
