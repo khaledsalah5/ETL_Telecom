@@ -33,7 +33,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\02_clean_data_with_null.csv">
+          DTS:ConnectionString="C:\PATH\TO\ETL_Telecom\source_files\batch 0\02_clean_data_with_null.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -118,7 +118,7 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="2"
-          DTS:ConnectionString="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\Processed_files" />
+          DTS:ConnectionString="C:\PATH\TO\ETL_Telecom\Processed_files" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -148,7 +148,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Directory">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\</DTS:VariableValue>
+        DTS:DataType="8">C:\PATH\TO\ETL_Telecom\source_files\batch 0\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -177,7 +177,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FullPath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0\02_clean_data_with_null.csv</DTS:VariableValue>
+        DTS:DataType="8">C:\PATH\TO\ETL_Telecom\source_files\batch 0\02_clean_data_with_null.csv</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -195,7 +195,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Processed_Files">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\Processed_files</DTS:VariableValue>
+        DTS:DataType="8">C:\PATH\TO\ETL_Telecom\Processed_files</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -259,7 +259,7 @@
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="C:\Users\ks134\Downloads\Compressed\ETL-Telecom-SSIS-master\source_files\batch 0" />
+              Folder="C:\PATH\TO\ETL_Telecom\source_files\batch 0" />
             <FEFEProperty
               FileSpec="*.csv" />
             <FEFEProperty
