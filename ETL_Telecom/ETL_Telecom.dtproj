@@ -22,8 +22,8 @@
           <SSIS:Property SSIS:Name="VersionComments">
           </SSIS:Property>
           <SSIS:Property SSIS:Name="CreationDate">2024-10-11T15:13:27.6638378+03:00</SSIS:Property>
-          <SSIS:Property SSIS:Name="CreatorName">KHALED_PC\ks134</SSIS:Property>
-          <SSIS:Property SSIS:Name="CreatorComputerName">KHALED_PC</SSIS:Property>
+          <SSIS:Property SSIS:Name="CreatorName">LOCAL_DEV\ks134</SSIS:Property>
+          <SSIS:Property SSIS:Name="CreatorComputerName">LOCAL_DEV</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
           <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAp6w/Vb0So0ei9uht6085mwAAAAACAAAAAAAQZgAAAAEAACAAAAAT0u2ddJ5RdL4IUORHz2EboexkTB8bMByMdbiNwqQtugAAAAAOgAAAAAIAACAAAADk3Yk4/PmTD490b1kFqJiUD7eR5HZIpoiflxei0hvGTZAAAAAcq8oOAjAIU3yqVERXSsgxYIBhu4NezTdaCaMrf78q8UXzBu9H2gzuRFaySzRvJmTZMmSBYPfX+YukZbmRIpqaOgwMxQDd2T7l7yOyTdcJxK8RckfWTl38r0t3Gf/wrFpwXzOjJfoMKFzdujD32CJCZQnrI+fLTuE2O4T7CszQ9DqHUK9X3xfA0RtNThhnFGFAAAAApVpeBp+LHUbDbXmse36VQmEgQr9axP2i9ff6Ris8AvrH8PdReQJz/FDQXoAQ5clt/q0ueGH0GZFjFE8ddUDtcQ==</SSIS:Property>
@@ -234,7 +234,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -249,7 +249,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -260,11 +260,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=KHALED_PC\SQLEXPRESS;Initial Catalog=ETL_Telecom;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=LOCAL_DEV\SQLEXPRESS;Initial Catalog=ETL_Telecom;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ConnectRetryCount">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ConnectRetryCount">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -279,7 +279,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ConnectRetryInterval">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ConnectRetryInterval">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -294,7 +294,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -309,7 +309,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -324,7 +324,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.Password">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -338,7 +338,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -353,7 +353,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -364,11 +364,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">KHALED_PC\SQLEXPRESS</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LOCAL_DEV\SQLEXPRESS</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.KHALED_PC\SQLEXPRESS.ETL_Telecom.UserName">
+                <SSIS:Parameter SSIS:Name="CM.LOCAL_DEV\SQLEXPRESS.ETL_Telecom.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
