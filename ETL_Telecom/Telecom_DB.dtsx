@@ -4,7 +4,7 @@
   DTS:CreationDate="10/11/2024 3:13:31 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LOCAL_DEV"
-  DTS:CreatorName="LOCAL_DEV\ks134"
+  DTS:CreatorName="DATA_ENGINEER"
   DTS:DTSID="{87B6BEC7-81C6-416F-82AB-669B2DBEA542}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5685.0"
@@ -99,15 +99,15 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
+      DTS:refId="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{C09C807A-A5B6-4C24-8F34-4BE2C4349D18}"
-      DTS:ObjectName="LOCAL_DEV\SQLEXPRESS.ETL_Telecom">
+      DTS:ObjectName="YOUR_SQL_SERVER.ETL_Telecom">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=LOCAL_DEV\SQLEXPRESS;Initial Catalog=ETL_Telecom;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=YOUR_SQL_SERVER;Initial Catalog=ETL_Telecom;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -791,8 +791,8 @@
                   <connections>
                     <connection
                       refId="Package\FF Looping\DFT- Load and process CSV Files\DB Erorr DEST.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
-                      connectionManagerRefId="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerID="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1044,8 +1044,8 @@
                   <connections>
                     <connection
                       refId="Package\FF Looping\DFT- Load and process CSV Files\DB Error SRC.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
-                      connectionManagerRefId="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerID="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1193,8 +1193,8 @@
                   <connections>
                     <connection
                       refId="Package\FF Looping\DFT- Load and process CSV Files\Dest DB.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
-                      connectionManagerRefId="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerID="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1773,8 +1773,8 @@ where [refTable].[imsi] = ?</property>
                   <connections>
                     <connection
                       refId="Package\FF Looping\DFT- Load and process CSV Files\LKP IMSI REF.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
-                      connectionManagerRefId="Package.ConnectionManagers[LOCAL_DEV\SQLEXPRESS.ETL_Telecom]"
+                      connectionManagerID="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
+                      connectionManagerRefId="Package.ConnectionManagers[YOUR_SQL_SERVER.ETL_Telecom]"
                       description="Connection manager used to access lookup data."
                       name="OleDbConnection" />
                   </connections>
